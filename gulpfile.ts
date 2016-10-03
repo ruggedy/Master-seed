@@ -18,6 +18,7 @@ gulp.task('build.dev', (done: any) =>
 //              'css-lint',
               'build.assets.dev',
               'build.html_css',
+              'build.fonts',
               'build.js.dev',
               'build.index.dev',
               done));
@@ -47,6 +48,7 @@ gulp.task('build.prod', (done: any) =>
               'css-lint',
               'build.assets.prod',
               'build.html_css',
+              'build.fonts',
               'copy.prod',
               'build.js.prod',
               'build.bundles',
@@ -63,6 +65,7 @@ gulp.task('build.prod.exp', (done: any) =>
               'css-lint',
               'build.assets.prod',
               'build.html_css',
+              'build.fonts',
               'copy.prod',
               'compile.ahead.prod',
               'build.js.prod.exp',

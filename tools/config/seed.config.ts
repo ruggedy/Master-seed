@@ -324,6 +324,16 @@ export class SeedConfig {
       .concat(this.APP_ASSETS.filter(filterDependency.bind(null, this.ENV)));
   }
 
+  materialComponents = [
+    'card',
+    'checkbox',
+    'radio',
+    'list',
+    'button',
+    'tabs',
+    'sidenav',
+  ]
+
   /**
    * The configuration of SystemJS for the `dev` environment.
    * @type {any}
@@ -333,7 +343,8 @@ export class SeedConfig {
     packageConfigPaths: [
       `/node_modules/*/package.json`,
       `/node_modules/**/package.json`,
-      `/node_modules/@angular/*/package.json`
+      `/node_modules/@angular/*/package.json`,
+      `/node_modules/@angular2-material/*/package.json`
     ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
@@ -355,8 +366,9 @@ export class SeedConfig {
       '@angular/platform-browser-dynamic/testing':
         'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
-
+      'primeng': `${this.APP_BASE}node_modules/primeng`,
       'app/*': '/app/*',
+
       // For test config
       'dist/dev/*': '/base/dist/dev/*',
       '*': 'node_modules/*'
@@ -381,7 +393,8 @@ export class SeedConfig {
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
       join('node_modules', '*', 'package.json'),
-      join('node_modules', '@angular', '*', 'package.json')
+      join('node_modules', '@angular', '*', 'package.json'),
+      join('node_modules', '@angular2-material', '*', 'package.json')
     ],
     paths: {
       [join(this.TMP_DIR, 'app', '*')]: `${this.TMP_DIR}/app/*`,

@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  padding: 0 24px;
+  width: 300px;
+}
+
+nav a {
+  display: block;
+  color: #8f8f8f;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 48px;
+  height: 40px;
+  text-decoration: none;
+}
+
+nav a.router-link-active {
+  color: #106cc8;
+}
