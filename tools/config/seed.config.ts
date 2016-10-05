@@ -365,8 +365,8 @@ export class SeedConfig {
         'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
       '@angular/platform-browser-dynamic/testing':
         'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+       'primeng': `${this.APP_BASE}node_modules/primeng/primeng`,
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
-      'primeng': `${this.APP_BASE}node_modules/primeng`,
       'app/*': '/app/*',
 
       // For test config
@@ -398,6 +398,7 @@ export class SeedConfig {
     ],
     paths: {
       [join(this.TMP_DIR, 'app', '*')]: `${this.TMP_DIR}/app/*`,
+      'primeng': `node_modules/primeng/primeng.js`,
       'node_modules/*': 'node_modules/*',
       '*': 'node_modules/*'
     },
@@ -440,6 +441,10 @@ export class SeedConfig {
       },
       'rxjs': {
         main: 'Rx.js',
+        defaultExtension: 'js'
+      },
+      'primeng': {
+        main: 'primeng.js',
         defaultExtension: 'js'
       }
     }

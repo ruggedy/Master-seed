@@ -67,15 +67,17 @@ export class PostComponent implements OnInit {
 
 	}
 
-	changeFeatured(event){
+	changeFeatured(event: any){
 		this.featured = event.checked;
 	}
 
 	onUpload(){
 		this._imageUploadService.uploadImage(this.file)
 			.then((response) => {
-				let imageArray = response.obj;
-				imageArray.forEach((image) => {
+				let obj: any = response;
+
+				let imageArray = obj.obj
+				imageArray.forEach((image: any) => {
 					let index = this.images.indexOf(image);
 
 					if(index === -1){

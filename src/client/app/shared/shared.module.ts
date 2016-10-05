@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { NameListService } from './name-list/index';
+import { PostService, ImageUploadService, BlogService } from './index';
+import { } from './'
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -17,11 +19,11 @@ import { NameListService } from './name-list/index';
   exports: [ToolbarComponent, NavbarComponent,
     CommonModule, FormsModule, RouterModule]
 })
-export class SharedModule {
+export class PrivateSharedModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SharedModule,
-      providers: [NameListService]
+      ngModule: PrivateSharedModule,
+      providers: [NameListService, PostService, ImageUploadService, BlogService]
     };
   }
 }

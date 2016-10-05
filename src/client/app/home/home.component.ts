@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/index';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NameListService, ToolbarComponent, BlogService } from '../shared/index';
+import { CarouselComponent } from '../header/index';
+import { NgSemanticModule } from 'ng-semantic';
+import { SharedModule } from 'primeng/primeng';
+
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -12,46 +16,26 @@ import { NameListService } from '../shared/index';
 })
 
 export class HomeComponent implements OnInit {
-
-  newName: string = '';
-  errorMessage: string;
-  names: any[] = [];
-
-  /**
-   * Creates an instance of the HomeComponent with the injected
-   * NameListService.
-   *
-   * @param {NameListService} nameListService - The injected NameListService.
-   */
-  constructor(public nameListService: NameListService) {}
-
-  /**
-   * Get the names OnInit
-   */
-  ngOnInit() {
-    this.getNames();
+  categories: any;
+  navSwitchValue: boolean = false;
+  toggleTracker: boolean = false;
+  @ViewChild("sideNav")sideNav:any;
+  constructor(private _blogService: BlogService) {
+   
   }
 
-  /**
-   * Handle the nameListService observable
-   */
-  getNames() {
-    this.nameListService.get()
-      .subscribe(
-        names => this.names = names,
-        error =>  this.errorMessage = <any>error
-      );
+  navValue(value: boolean){
+      this.sideNav.show({transition: 'slide along'});
   }
 
-  /**
-   * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addName(): boolean {
-    // TODO: implement nameListService.post
-    this.names.push(this.newName);
-    this.newName = '';
-    return false;
+  ngOnInit(){
+    this._blogService.getCategories()
+        .subscribe(
+            data => {
+              this.categories = data.obj;
+              console.log(data.obj);
+            }
+        )
   }
 
 }

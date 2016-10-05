@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input} from '@angular/core';
 
 /**
  * This class represents the toolbar component.
@@ -10,5 +10,16 @@ import { Component } from '@angular/core';
   styleUrls: ['toolbar.component.css']
 })
 
-export class ToolbarComponent {}
+export class ToolbarComponent {
+  @Input()toggle: boolean = false;
+  @Output()navswitch: EventEmitter<boolean> = new EventEmitter<boolean>() ; 
+  constructor(){}
+
+  switchNav(){
+    this.toggle = !this.toggle;
+    this.navswitch.emit(this.toggle)
+  }
+
+
+}
 

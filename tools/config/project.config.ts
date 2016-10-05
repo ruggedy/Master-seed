@@ -10,7 +10,7 @@ export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
-  API_DEST = 'http://localhost:3000/api/';
+  API_DEST = 'https://damishley.herokuapp.com/api/';
   FONTS_DEST = `${this.APP_DEST}/fonts`;
   FONTS_SRC = [
     'node_modules/font-awesome/fonts/**'
@@ -56,6 +56,15 @@ export class ProjectConfig extends SeedConfig {
     this.SYSTEM_BUILDER_CONFIG.packages['aws-sdk'] = 
       {
         main: 'dist/aws-sdk.js',
+        defaultExtension: 'js'
+      }
+
+    this.SYSTEM_CONFIG_DEV.paths['primeng'] = 
+      `${this.APP_BASE}node_modules/primeng/primeng`;
+
+    this.SYSTEM_BUILDER_CONFIG.packages['primeng'] = 
+      {
+        main: 'primeng',
         defaultExtension: 'js'
       }
     

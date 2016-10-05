@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
+import { PrivateSharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home.component';
-import { NameListService } from '../shared/name-list/index';
+import { routing } from './home.routes';
+import { NameListService, BlogService, WordPipe, ArrayPipe } from '../shared/index';
+import { MdCardModule } from '@angular2-material/card';
+import { MdGridListModule } from '@angular2-material/grid-list';
+import { NgSemanticModule } from 'ng-semantic';
+import { SharedModule, AccordionModule } from 'primeng/primeng';
+import { InitialPageComponent, FeaturedPostComponent, SideComponent, CarouselComponent, PostItemsComponent } from './index';
 
 @NgModule({
-  imports: [CommonModule, SharedModule],
-  declarations: [HomeComponent],
-  exports: [HomeComponent],
-  providers: [NameListService]
+  imports: [CommonModule, PrivateSharedModule,SharedModule, AccordionModule, routing,  MdCardModule, MdGridListModule, NgSemanticModule, AccordionModule],
+  declarations: [HomeComponent, CarouselComponent, InitialPageComponent, 
+                  FeaturedPostComponent, PostItemsComponent, SideComponent, WordPipe, ArrayPipe],
+  providers: [NameListService, BlogService]
 })
 export class HomeModule { }
