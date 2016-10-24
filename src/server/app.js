@@ -14,6 +14,7 @@ var imageUploadRoutes = require('./routes/imageUpload');
 var postRoutes = require('./routes/posts');
 var userRoutes = require('./routes/users');
 var blogRoutes = require('./routes/blogs');
+var quoteRoutes = require('./routes/quotes');
 
 var app = express();
 mongoose.Promise = global.Promise;
@@ -38,6 +39,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/api/blog', blogRoutes)
+app.use('/api/quote', quoteRoutes)
 app.use('/api/image-upload', imageUploadRoutes)
 app.use('/api/post', postRoutes)
 app.use('/api/user', userRoutes);

@@ -16,7 +16,7 @@ var Featured = require('../models/featured');
 // router.use('/', function (req, res, next) {
 //     var cert = fs.readFileSync(path.join(__dirname, 'public.pem'));
 //     jwt.verify(req.query.token, cert, {algorithms: ['RS256']}, function(err, payload) {
-      
+
 //         if (err) {
 //             return res.status(401).json({
 //                 title:'Invalid User',
@@ -27,12 +27,12 @@ var Featured = require('../models/featured');
 //     });
 // });
 
-router.get('/', function(req, res, next){
+router.get('/', function (req, res, next) {
 	Post.find()
-		.populate('category')
 		.populate('tags')
-		.exec(function(err, doc){
-			if(err){
+		.populate('category')
+		.exec(function (err, doc) {
+			if (err) {
 				return res.status(404).json({
 					message: 'An error occured',
 					obj: err
@@ -46,10 +46,10 @@ router.get('/', function(req, res, next){
 		})
 })
 
-router.get('/tags', function(req, res, next){
+router.get('/tags', function (req, res, next) {
 	Tag.find()
-		.exec(function(err, doc){
-			if(err){
+		.exec(function (err, doc) {
+			if (err) {
 				return res.status(404).json({
 					message: 'An error occured',
 					obj: err
@@ -63,10 +63,10 @@ router.get('/tags', function(req, res, next){
 		})
 })
 
-router.get('/categories', function(req, res, next){
+router.get('/categories', function (req, res, next) {
 	Category.find()
-		.exec(function(err, doc){
-			if(err){
+		.exec(function (err, doc) {
+			if (err) {
 				return res.status(404).json({
 					message: 'An error occured',
 					obj: err
@@ -80,11 +80,11 @@ router.get('/categories', function(req, res, next){
 		})
 })
 
-router.get('/featured-post', function(req, res, next){
+router.get('/featured-post', function (req, res, next) {
 	Featured.findOne({})
 		.populate('post')
-		.exec(function(err, doc){
-			if(err){
+		.exec(function (err, doc) {
+			if (err) {
 				return res.status(404).json({
 					message: 'An error occured',
 					obj: err
